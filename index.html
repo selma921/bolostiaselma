@@ -3,83 +3,249 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bolos da Tia Selma</title>
+    <title>Bolos da Tia Selma - Sabor Caseiro de Icoaraci</title>
+    <meta name="description" content="Bolos caseiros deliciosos em Icoaraci. Delivery disponível! Peça pelo WhatsApp.">
     <style>
-        body { font-family: 'Segoe UI', sans-serif; margin: 0; background: #fdf5e6; color: #5d2906; text-align: center; }
-        header { background: #ff8c00; color: white; padding: 20px; }
-        .logo { width: 150px; border-radius: 50%; margin-top: 10px; border: 3px solid white; }
-        .vitrine { display: flex; flex-wrap: wrap; justify-content: center; padding: 20px; }
-        .produto { background: white; border-radius: 15px; margin: 15px; padding: 15px; width: 280px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
-        .produto img { width: 100%; border-radius: 10px; height: 200px; object-fit: cover; }
-        .valor { font-size: 20px; font-weight: bold; color: #d2691e; margin: 10px 0; }
-        .entrega { color: #d2691e; font-size: 14px; font-weight: bold; margin-bottom: 10px; }
-        .btn-whats { display: block; background: #25d366; color: white; padding: 12px; text-decoration: none; border-radius: 8px; font-weight: bold; margin-top: 10px; }
-        .cardapio-btn { display: inline-block; background: #d2691e; color: white; padding: 15px 30px; text-decoration: none; border-radius: 50px; font-weight: bold; margin: 20px; }
-        footer { padding: 20px; background: #333; color: white; margin-top: 30px; }
+        :root {
+            --laranja: #ff8c00;
+            --marrom: #5d2906;
+            --creme: #fdf5e6;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: var(--creme);
+            color: var(--marrom);
+            line-height: 1.6;
+        }
+        
+        /* Hero Banner */
+        .hero {
+            height: 60vh;
+            min-height: 400px;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('banner.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            position: relative;
+        }
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 3px 10px rgba(0,0,0,0.6);
+        }
+        .hero-content p {
+            font-size: 1.4rem;
+            margin-bottom: 20px;
+        }
+        
+        .logo {
+            width: 180px;
+            border-radius: 50%;
+            border: 5px solid white;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+        
+        .btn {
+            display: inline-block;
+            background: var(--laranja);
+            color: white;
+            padding: 14px 35px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 10px;
+            transition: 0.3s;
+        }
+        .btn:hover { transform: scale(1.05); background: #e67e00; }
+        
+        /* Vitrine */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            color: var(--marrom);
+        }
+        .vitrine {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+        .produto {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            transition: 0.3s;
+        }
+        .produto:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        .produto img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+        }
+        .info {
+            padding: 20px;
+        }
+        .valor {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: var(--laranja);
+            margin: 10px 0;
+        }
+        .btn-whats {
+            display: block;
+            background: #25d366;
+            color: white;
+            padding: 14px;
+            text-decoration: none;
+            border-radius: 12px;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: 0.3s;
+        }
+        .btn-whats:hover {
+            background: #20ba5a;
+            transform: scale(1.03);
+        }
+        
+        /* Botão WhatsApp Flutuante */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 28px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            z-index: 1000;
+            text-decoration: none;
+        }
+        
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 50px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-content h1 { font-size: 2.5rem; }
+            .hero-content p { font-size: 1.2rem; }
+        }
     </style>
 </head>
 <body>
+    <!-- Hero Banner -->
+    <section class="hero">
+        <div class="hero-content">
+            <img src="cardápio.jpeg" alt="Bolos da Tia Selma" class="logo">
+            <h1>Bolos da Tia Selma</h1>
+            <p>Sabor caseiro que conquista ❤️</p>
+            <p><strong>Icoaraci - Belém/PA</strong></p>
+            <a href="#produtos" class="btn">Ver Nossos Bolos</a>
+        </div>
+    </section>
 
-<header>
-    <!-- Logotipo -->
-    <img src="cardápio.jpeg" alt="Logotipo Bolos da Tia Selma" class="logo">
-    <h1>Bolos da Tia Selma</h1>
-    <p>Sabor caseiro que conquista - Icoaraci</p>
-</header>
+    <div class="container">
+        <a href="cardápio.jpeg" target="_blank" class="btn" style="display:block; text-align:center; max-width:300px; margin:0 auto 40px;">
+            📋 VER CARDÁPIO COMPLETO
+        </a>
 
-<a href="cardápio.jpeg" target="_blank" class="cardapio-btn">VER CARDÁPIO COMPLETO</a>
+        <h2 id="produtos">Nossos Produtos</h2>
+        
+        <div class="vitrine">
+            <!-- Adicione quantos produtos quiser -->
+            <div class="produto">
+                <img src="bolo salgado.jpeg" alt="Bolo Salgado">
+                <div class="info">
+                    <h3>Bolo Salgado Especial</h3>
+                    <p class="valor">R$ 80,00</p>
+                    <p>Delivery a combinar</p>
+                    <a href="https://wa.me/5591989440356?text=Quero%20encomendar%20Bolo%20Salgado" class="btn-whats" target="_blank">
+                        Pedir no WhatsApp
+                    </a>
+                </div>
+            </div>
 
-<div class="vitrine">
-    <!-- Bolo Salgado -->
-    <div class="produto">
-        <img src="bolo salgado.jpeg" alt="Bolo Salgado">
-        <h3>Bolo Salgado Especial</h3>
-        <p class="valor">R$ 80,00</p>
-        <p class="entrega">Delivery a combinar</p>
-        <a href="https://wa.me/5591989440356?text=Quero+encomendar+Bolo+Salgado" class="btn-whats">PEDIR NO WHATSAPP</a>
+            <div class="produto">
+                <img src="bolo pudim.jpeg" alt="Bolo Pudim">
+                <div class="info">
+                    <h3>Bolo Pudim Cremoso</h3>
+                    <p class="valor">R$ 80,00</p>
+                    <p>Delivery a combinar</p>
+                    <a href="https://wa.me/5591989440356?text=Quero%20encomendar%20Bolo%20Pudim" class="btn-whats" target="_blank">
+                        Pedir no WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="produto">
+                <img src="bolo de chocolate.jpeg" alt="Bolo de Chocolate">
+                <div class="info">
+                    <h3>Bolo de Chocolate</h3>
+                    <p class="valor">R$ 80,00</p>
+                    <p>Delivery a combinar</p>
+                    <a href="https://wa.me/5591989440356?text=Quero%20encomendar%20Bolo%20de%20Chocolate" class="btn-whats" target="_blank">
+                        Pedir no WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="produto">
+                <img src="pão de rosas.jpeg" alt="Pão de Rosas">
+                <div class="info">
+                    <h3>Pão de Rosas</h3>
+                    <p class="valor">R$ 80,00</p>
+                    <p>Delivery a combinar</p>
+                    <a href="https://wa.me/5591989440356?text=Quero%20encomendar%20Pão%20de%20Rosas" class="btn-whats" target="_blank">
+                        Pedir no WhatsApp
+                    </a>
+                </div>
+            </div>
+
+            <div class="produto">
+                <img src="rosca caseira.jpeg" alt="Rosca Caseira">
+                <div class="info">
+                    <h3>Rosca Caseira</h3>
+                    <p class="valor">R$ 80,00</p>
+                    <p>Delivery a combinar</p>
+                    <a href="https://wa.me/5591989440356?text=Quero%20encomendar%20Rosca%20Caseira" class="btn-whats" target="_blank">
+                        Pedir no WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <!-- Bolo Pudim -->
-    <div class="produto">
-        <img src="bolo pudim.jpeg" alt="Bolo Pudim">
-        <h3>Bolo Pudim Cremoso</h3>
-        <p class="valor">R$ 80,00</p>
-        <p class="entrega">Delivery a combinar</p>
-        <a href="https://wa.me/5591989440356?text=Quero+encomendar+Bolo+Pudim" class="btn-whats">PEDIR NO WHATSAPP</a>
-    </div>
+    <!-- Botão WhatsApp Flutuante -->
+    <a href="https://wa.me/5591989440356" class="whatsapp-float" target="_blank">
+        💬
+    </a>
 
-    <!-- Bolo Chocolate -->
-    <div class="produto">
-        <img src="bolo de chocolate.jpeg" alt="Bolo de Chocolate">
-        <h3>Bolo de Chocolate</h3>
-        <p class="valor">R$ 80,00</p>
-        <p class="entrega">Delivery a combinar</p>
-        <a href="https://wa.me/5591989440356?text=Quero+encomendar+Bolo+Chocolate" class="btn-whats">PEDIR NO WHATSAPP</a>
-    </div>
-
-    <!-- Pão de Rosas -->
-    <div class="produto">
-        <img src="pão de rosas.jpeg" alt="Pão de Rosas">
-        <h3>Pão de Rosas</h3>
-        <p class="valor">R$ 80,00</p>
-        <p class="entrega">Delivery a combinar</p>
-        <a href="https://wa.me/5591989440356?text=Quero+encomendar+Pao+de+Rosas" class="btn-whats">PEDIR NO WHATSAPP</a>
-    </div>
-
-    <!-- Rosca Caseira -->
-    <div class="produto">
-        <img src="rosca caseira.jpeg" alt="Rosca Caseira">
-        <h3>Rosca Caseira</h3>
-        <p class="valor">R$ 80,00</p>
-        <p class="entrega">Delivery a combinar</p>
-        <a href="https://wa.me/5591989440356?text=Quero+encomendar+Rosca+Caseira" class="btn-whats">PEDIR NO WHATSAPP</a>
-    </div>
-</div>
-
-<footer>
-    <p>📍 Icoaraci - Bairro Ponta Grossa</p>
-    <p>WhatsApp: (91) 98944-0356</p>
-</footer>
-
+    <footer>
+        <p><strong>Bolos da Tia Selma</strong> - Icoaraci, Ponta Grossa - Belém/PA</p>
+        <p>WhatsApp: (91) 98944-0356</p>
+        <p>&copy; 2026 - Feito com carinho ❤️</p>
+    </footer>
 </body>
 </html>
