@@ -49,6 +49,52 @@
             text-shadow: 0 3px 10px rgba(0,0,0,0.7);
         }
         
+        /* === BANNER PROMOCIONAL === */
+        .banner-promo {
+            background: linear-gradient(135deg, var(--laranja), #ff7b00);
+            color: white;
+            text-align: center;
+            padding: 18px 20px;
+            margin: 0;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(255,140,0,0.4);
+        }
+        .banner-promo::before {
+            content: '🎉';
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+        }
+        .banner-promo::after {
+            content: '🍰';
+            position: absolute;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2rem;
+        }
+        .banner-content {
+            position: relative;
+            z-index: 1;
+        }
+        .banner-promo h3 {
+            font-size: 1.6rem;
+            margin-bottom: 4px;
+            font-weight: bold;
+        }
+        .banner-promo .destaque {
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+        }
+        .banner-promo .chamada {
+            font-size: 1.1rem;
+            opacity: 0.95;
+        }
+        
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -141,6 +187,14 @@
             text-align: center;
             padding: 40px 20px;
         }
+
+        /* Responsivo para o banner */
+        @media (max-width: 768px) {
+            .banner-promo h3 { font-size: 1.4rem; }
+            .banner-promo .destaque { font-size: 1.2rem; }
+            .banner-promo::before,
+            .banner-promo::after { font-size: 1.5rem; }
+        }
     </style>
 </head>
 <body>
@@ -157,6 +211,15 @@
             <p style="font-size:1.3rem; margin-top:10px;">Icoaraci — Belém/PA</p>
         </div>
     </section>
+
+    <!-- BANNER PROMOCIONAL -->
+    <div class="banner-promo">
+        <div class="banner-content">
+            <h3>🍰 PROMOÇÃO ESPECIAL 🍰</h3>
+            <div class="destaque">2 Bolos por R$ 130,00!</div>
+            <div class="chamada">Válido até amanhã - Peça já pelo WhatsApp!</div>
+        </div>
+    </div>
 
     <div class="container">
 
@@ -230,7 +293,7 @@
 
             <!-- Novo produto -->
             <div class="produto">
-                <img src="bolo de tapioca.jpeg" alt="Bolo de Tapioca">   <!-- coloque a foto aqui -->
+                <img src="bolo de tapioca.jpeg" alt="Bolo de Tapioca">
                 <div class="info">
                     <h3>Bolo de Tapioca</h3>
                     <p class="descricao">Bolo cremoso de tapioca com sabor típico paraense.</p>
