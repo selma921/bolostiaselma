@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bolos da Tia Selma - Icoaraci</title>
-    <meta name="description" content="Bolos e doces caseiros deliciosos em Icoaraci. Feito com carinho e tradição paraense.">
     
     <style>
         :root {
@@ -21,7 +20,6 @@
             line-height: 1.6;
         }
         
-        /* Header */
         header {
             background: white;
             padding: 15px 20px;
@@ -29,6 +27,7 @@
             position: sticky;
             top: 0;
             z-index: 100;
+            text-align: center;
         }
         .logo {
             max-height: 95px;
@@ -59,7 +58,7 @@
         h2 {
             text-align: center;
             font-size: 2.6rem;
-            margin-bottom: 40px;
+            margin: 40px 0 30px;
             color: var(--marrom);
         }
         
@@ -75,9 +74,7 @@
             box-shadow: 0 8px 20px rgba(0,0,0,0.1);
             transition: 0.3s;
         }
-        .produto:hover {
-            transform: translateY(-8px);
-        }
+        .produto:hover { transform: translateY(-8px); }
         .produto img {
             width: 100%;
             height: 240px;
@@ -88,29 +85,35 @@
             text-align: center;
         }
         .info h3 {
-            font-size: 1.4rem;
-            margin-bottom: 12px;
-            color: var(--marrom);
+            font-size: 1.35rem;
+            margin-bottom: 10px;
         }
         .descricao {
-            font-size: 1.05rem;
             color: #444;
-            margin-bottom: 15px;
+            margin-bottom: 10px;
         }
         
-        /* Botão Cardápio */
-        .cardapio-btn {
-            display: block;
-            text-align: center;
-            background: var(--laranja);
-            color: white;
-            padding: 16px 40px;
-            border-radius: 50px;
-            text-decoration: none;
+        /* === CARDÁPIO DENTRO DO SITE === */
+        .cardapio {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            margin: 40px auto;
+        }
+        .cardapio-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 1.1rem;
+        }
+        .cardapio-item:last-child {
+            border-bottom: none;
+        }
+        .preco {
             font-weight: bold;
-            font-size: 1.2rem;
-            margin: 30px auto;
-            max-width: 320px;
+            color: var(--laranja);
         }
         
         /* WhatsApp Flutuante */
@@ -142,7 +145,7 @@
 </head>
 <body>
 
-    <!-- Header com Logo Horizontal -->
+    <!-- Header -->
     <header>
         <img src="logo-horizontal.png" alt="Bolos da Tia Selma" class="logo">
     </header>
@@ -151,16 +154,13 @@
     <section class="hero">
         <div>
             <h1>Sabor Caseiro que Conquista</h1>
-            <p style="font-size:1.3rem; margin-top:10px;">Icoaraci • Belém • Pará</p>
+            <p style="font-size:1.3rem; margin-top:10px;">Icoaraci — Belém/PA</p>
         </div>
     </section>
 
     <div class="container">
-        <a href="cardápio.jpeg" target="_blank" class="cardapio-btn">
-            📋 VER CARDÁPIO COMPLETO COM PREÇOS
-        </a>
 
-        <h2>Nossos Bolos e Doces</h2>
+        <h2>Nossos Produtos</h2>
         
         <div class="vitrine">
 
@@ -168,39 +168,7 @@
                 <img src="bolo de chocolate.jpeg" alt="Bolo de Chocolate">
                 <div class="info">
                     <h3>Bolo de Chocolate</h3>
-                    <p class="descricao">Bolo fofinho e úmido, feito com chocolate de qualidade e muito carinho. Sabor intenso que derrete na boca.</p>
-                </div>
-            </div>
-
-            <div class="produto">
-                <img src="bolo salgado.jpeg" alt="Bolo Salgado">
-                <div class="info">
-                    <h3>Bolo Salgado Especial</h3>
-                    <p class="descricao">Delicioso bolo salgado recheado com ingredientes frescos. Perfeito para lanches, café da tarde ou reuniões.</p>
-                </div>
-            </div>
-
-            <div class="produto">
-                <img src="rosca caseira.jpeg" alt="Rosca Caseira">
-                <div class="info">
-                    <h3>Rosca Caseira</h3>
-                    <p class="descricao">Rosca tradicional feita em casa, macia e perfumada. Ideal para acompanhar café ou chá da tarde.</p>
-                </div>
-            </div>
-
-            <div class="produto">
-                <img src="pudim de tapioca.jpeg" alt="Pudim de Tapioca">
-                <div class="info">
-                    <h3>Pudim de Tapioca</h3>
-                    <p class="descricao">Versão cremosa e deliciosa do clássico pudim, com sabor autêntico da tapioca paraense.</p>
-                </div>
-            </div>
-
-            <div class="produto">
-                <img src="bolo de milho.jpeg" alt="Bolo de Milho">
-                <div class="info">
-                    <h3>Bolo de Milho</h3>
-                    <p class="descricao">Bolo de milho cremoso e dourado, com aquele sabor caseiro que lembra a infância.</p>
+                    <p class="descricao">Bolo fofinho com sabor intenso de chocolate.</p>
                 </div>
             </div>
 
@@ -208,15 +176,15 @@
                 <img src="bolo de cenoura com chocolate.jpeg" alt="Bolo de Cenoura">
                 <div class="info">
                     <h3>Bolo de Cenoura com Chocolate</h3>
-                    <p class="descricao">O famoso bolo de cenoura com cobertura de chocolate irresistível. Sucesso garantido!</p>
+                    <p class="descricao">Clássico bolo de cenoura com cobertura de chocolate.</p>
                 </div>
             </div>
 
             <div class="produto">
-                <img src="pão de rosas.jpeg" alt="Pão de Rosas">
+                <img src="bolo de milho.jpeg" alt="Bolo de Milho">
                 <div class="info">
-                    <h3>Pão de Rosas</h3>
-                    <p class="descricao">Pãezinhos doces em formato de rosa, macios e perfeitos para compartilhar com a família.</p>
+                    <h3>Bolo de Milho</h3>
+                    <p class="descricao">Cremoso e dourado, sabor caseiro tradicional.</p>
                 </div>
             </div>
 
@@ -224,14 +192,70 @@
                 <img src="bolo pudim.jpeg" alt="Bolo Pudim">
                 <div class="info">
                     <h3>Bolo Pudim</h3>
-                    <p class="descricao">Mistura perfeita entre bolo e pudim, cremoso por dentro e dourado por fora. Uma delícia única.</p>
+                    <p class="descricao">Mistura perfeita de bolo e pudim, muito cremoso.</p>
+                </div>
+            </div>
+
+            <div class="produto">
+                <img src="pudim de tapioca.jpeg" alt="Pudim de Tapioca">
+                <div class="info">
+                    <h3>Pudim de Tapioca</h3>
+                    <p class="descricao">Versão cremosa com sabor autêntico paraense.</p>
+                </div>
+            </div>
+
+            <div class="produto">
+                <img src="bolo salgado.jpeg" alt="Bolo Salgado">
+                <div class="info">
+                    <h3>Bolo Salgado Especial</h3>
+                    <p class="descricao">Delicioso bolo salgado recheado.</p>
+                </div>
+            </div>
+
+            <div class="produto">
+                <img src="pão de rosas.jpeg" alt="Pão de Rosas">
+                <div class="info">
+                    <h3>Pão de Rosas</h3>
+                    <p class="descricao">Pãezinhos doces em formato de rosa.</p>
+                </div>
+            </div>
+
+            <div class="produto">
+                <img src="rosca caseira.jpeg" alt="Rosca Caseira">
+                <div class="info">
+                    <h3>Rosca Caseira</h3>
+                    <p class="descricao">Macia e perfumada, perfeita para o café.</p>
+                </div>
+            </div>
+
+            <!-- Novo produto -->
+            <div class="produto">
+                <img src="bolo de tapioca.jpeg" alt="Bolo de Tapioca">   <!-- coloque a foto aqui -->
+                <div class="info">
+                    <h3>Bolo de Tapioca</h3>
+                    <p class="descricao">Bolo cremoso de tapioca com sabor típico paraense.</p>
                 </div>
             </div>
 
         </div>
+
+        <!-- CARDÁPIO COMPLETO COM PREÇOS -->
+        <h2>Cardápio Completo</h2>
+        <div class="cardapio">
+            <div class="cardapio-item"><span>Bolo de Chocolate</span><span class="preco">R$ 70,00</span></div>
+            <div class="cardapio-item"><span>Bolo de Cenoura com Chocolate</span><span class="preco">R$ 80,00</span></div>
+            <div class="cardapio-item"><span>Bolo de Milho</span><span class="preco">R$ 70,00</span></div>
+            <div class="cardapio-item"><span>Bolo Pudim</span><span class="preco">R$ 80,00</span></div>
+            <div class="cardapio-item"><span>Pudim de Tapioca</span><span class="preco">R$ 80,00</span></div>
+            <div class="cardapio-item"><span>Bolo Salgado Especial</span><span class="preco">R$ 80,00</span></div>
+            <div class="cardapio-item"><span>Pão de Rosas</span><span class="preco">R$ 80,00</span></div>
+            <div class="cardapio-item"><span>Rosca Caseira</span><span class="preco">R$ 80,00</span></div>
+            <div class="cardapio-item"><span>Bolo de Tapioca</span><span class="preco">R$ 80,00</span></div>
+        </div>
+
     </div>
 
-    <!-- Botão WhatsApp Flutuante -->
+    <!-- WhatsApp Flutuante -->
     <a href="https://wa.me/5591989440356" class="whatsapp-float" target="_blank">
         💬
     </a>
@@ -239,7 +263,7 @@
     <footer>
         <p><strong>Bolos da Tia Selma</strong> • Icoaraci - Ponta Grossa, Belém/PA</p>
         <p>WhatsApp: (91) 98944-0356</p>
-        <p>Feito com ❤️ para quem ama sabor caseiro</p>
+        <p>Delivery a combinar</p>
     </footer>
 </body>
 </html>
