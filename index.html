@@ -20,18 +20,23 @@
             line-height: 1.6;
         }
         
-        /* Banner Principal */
+        /* Banner Principal - Agora no topo sem o header */
         .hero-container {
             background: white;
             text-align: center;
             border-bottom: 5px solid var(--laranja);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        .hero-banner {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: block;
         }
         .hero-banner img {
             width: 100%;
-            max-width: 1200px;
             height: auto;
             display: block;
-            margin: 0 auto;
         }
         
         .container {
@@ -42,19 +47,15 @@
         
         h2 {
             text-align: center;
-            font-size: 2.3rem;
+            font-size: 2.6rem;
             margin: 40px 0 30px;
             color: var(--marrom);
-            text-transform: uppercase;
-            letter-spacing: 2px;
         }
         
-        /* Vitrine de Destaques */
         .vitrine {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
-            margin-bottom: 50px;
         }
         .produto {
             background: white;
@@ -64,53 +65,35 @@
             transition: 0.3s;
         }
         .produto:hover { transform: translateY(-8px); }
-        .produto img { width: 100%; height: 240px; object-fit: cover; }
-        .info { padding: 20px; text-align: center; }
-
-        /* NOVO CARDÁPIO ESTILIZADO */
-        .cardapio-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 20px;
+        .produto img {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+        }
+        .info {
+            padding: 20px;
+            text-align: center;
+        }
+        
+        .cardapio {
             background: white;
+            border-radius: 20px;
             padding: 30px;
-            border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+            margin: 40px auto;
         }
         .cardapio-item {
             display: flex;
-            align-items: center;
-            gap: 15px;
-            padding: 10px;
-            border-bottom: 1px dashed #ddd;
+            justify-content: space-between;
+            padding: 14px 0;
+            border-bottom: 1px solid #eee;
         }
-        .cardapio-img {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 2px solid var(--laranja);
+        .preco {
+            font-weight: bold;
+            color: var(--laranja);
         }
-        .cardapio-info { flex: 1; }
-        .cardapio-nome { font-weight: bold; font-size: 1.1rem; }
-        .preco { font-weight: bold; color: var(--laranja); font-size: 1.2rem; }
-
-        /* SEÇÃO DE DICAS (BLOG) */
-        .secao-dicas {
-            margin-top: 60px;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-        .dica-card {
-            background: #fff3e0;
-            padding: 25px;
-            border-left: 6px solid var(--laranja);
-            border-radius: 15px;
-        }
-        .dica-card h4 { color: var(--marrom); margin-bottom: 10px; display: flex; align-items: center; gap: 8px; }
-
-        /* WhatsApp */
+        
+        /* NOVO BOTÃO WHATSAPP ATRAENTE */
         .whatsapp-float {
             position: fixed;
             bottom: 30px;
@@ -127,19 +110,33 @@
             box-shadow: 0 10px 25px rgba(37, 211, 102, 0.5);
             z-index: 1000;
             text-decoration: none;
-            animation: pulse 2s infinite;
+            transition: all 0.3s ease;
+            animation: pulse 2s infinite; /* Efeito de pulsação */
         }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            box-shadow: 0 15px 30px rgba(37, 211, 102, 0.7);
+        }
+
+        /* Animação de pulsação */
         @keyframes pulse {
             0% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7); }
             70% { box-shadow: 0 0 0 20px rgba(37, 211, 102, 0); }
             100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
         }
         
-        footer { background: #333; color: white; text-align: center; padding: 40px 20px; margin-top: 60px; }
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
     </style>
 </head>
 <body>
 
+<!-- O Banner agora é o topo do site -->
 <section class="hero-container">
     <div class="hero-banner">
         <img src="banner.jpeg.jpeg" alt="Banner Bolos da Tia Selma">
@@ -147,60 +144,42 @@
 </section>
 
 <div class="container">
-    <h2>Destaques da Semana</h2>
+    <h2>Nossos Produtos</h2>
     <div class="vitrine">
         <div class="produto">
             <img src="bolo de chocolate.jpeg" alt="Bolo de Chocolate">
-            <div class="info"><h3>Bolo de Chocolate</h3></div>
+            <div class="info">
+                <h3>Bolo de Chocolate</h3>
+                <p class="descricao">Bolo fofinho com sabor intenso de chocolate.</p>
+            </div>
         </div>
         <div class="produto">
-            <img src="bolo de tapioca.jpeg" alt="Bolo de Tapioca">
-            <div class="info"><h3>Bolo de Tapioca</h3></div>
+            <img src="bolo de cenoura com chocolate.jpeg" alt="Bolo de Cenoura">
+            <div class="info">
+                <h3>Bolo de Cenoura com Chocolate</h3>
+                <p class="descricao">Clássico bolo de cenoura com cobertura de chocolate.</p>
+            </div>
         </div>
+        <!-- Adicione aqui os outros produtos conforme necessário -->
     </div>
 
     <h2>Cardápio Completo</h2>
-    <div class="cardapio-grid">
-        <div class="cardapio-item">
-            <img src="bolo de chocolate.jpeg" class="cardapio-img">
-            <div class="cardapio-info"><p class="cardapio-nome">Bolo de Chocolate</p></div>
-            <span class="preco">R$ 70</span>
-        </div>
-        <div class="cardapio-item">
-            <img src="bolo de cenoura com chocolate.jpeg" class="cardapio-img">
-            <div class="cardapio-info"><p class="cardapio-nome">Cenoura c/ Chocolate</p></div>
-            <span class="preco">R$ 80</span>
-        </div>
-        <div class="cardapio-item">
-            <img src="bolo de tapioca.jpeg" class="cardapio-img">
-            <div class="cardapio-info"><p class="cardapio-nome">Bolo de Tapioca</p></div>
-            <span class="preco">R$ 80</span>
-        </div>
-        <div class="cardapio-item">
-            <img src="bolo salgado.jpeg" class="cardapio-img">
-            <div class="cardapio-info"><p class="cardapio-nome">Bolo Salgado Especial</p></div>
-            <span class="preco">R$ 80</span>
-        </div>
-    </div>
-
-    <h2>Dicas da Tia Selma 💡</h2>
-    <div class="secao-dicas">
-        <div class="dica-card">
-            <h4>🔥 Segredo do Forno</h4>
-            <p>Nunca abra o forno antes dos primeiros 25 minutos! O choque térmico faz o bolo solar. Espere o cheirinho de bolo assado tomar conta da cozinha antes de checar.</p>
-        </div>
-        <div class="dica-card">
-            <h4>✨ Bolo Sempre Fofinho</h4>
-            <p>Para manter seu bolo macio por mais dias, guarde-o em um recipiente bem fechado após esfriar totalmente. Se o bolo for de frutas ou tapioca, a geladeira ajuda a preservar o sabor de Icoaraci!</p>
-        </div>
+    <div class="cardapio">
+        <div class="cardapio-item"><span>Bolo de Chocolate</span><span class="preco">R$ 70,00</span></div>
+        <div class="cardapio-item"><span>Bolo de Cenoura com Chocolate</span><span class="preco">R$ 80,00</span></div>
+        <div class="cardapio-item"><span>Bolo Salgado Especial</span><span class="preco">R$ 80,00</span></div>
     </div>
 </div>
 
-<a href="https://wa.me/5591989440356" class="whatsapp-float" target="_blank">💬</a>
+<!-- Botão WhatsApp Novo -->
+<a href="https://wa.me/5591989440356" class="whatsapp-float" target="_blank" title="Peça pelo WhatsApp">
+    💬
+</a>
 
 <footer>
     <p><strong>Bolos da Tia Selma</strong> • Icoaraci - Ponta Grossa, Belém/PA</p>
     <p>WhatsApp: (91) 98944-0356</p>
+    <p>Delivery a combinar</p>
 </footer>
 
 </body>
