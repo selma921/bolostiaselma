@@ -1,418 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bolos da Tia Selma - Delícias Caseiras em Icoaraci</title>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <style>
-        :root {
-            --laranja: #ff8c00;
-            --laranja-escuro: #e67700;
-            --marrom: #5d2906;
-            --creme: #fdf5e6;
-            --branco: #ffffff;
-            --sombra: 0 20px 40px rgba(0,0,0,0.1);
-            --sombra-hover: 0 25px 50px rgba(0,0,0,0.15);
-        }
-        
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, var(--creme), #f9e8d2);
-            color: var(--marrom);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        /* Header Moderno */
-        header {
-            background: rgba(255,255,255,0.95);
-            padding: 1rem 0;
-            box-shadow: var(--sombra);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            backdrop-filter: blur(10px);
-        }
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 2rem;
-        }
-        .logo {
-            height: 60px;
-            background: linear-gradient(135deg, var(--laranja), var(--laranja-escuro));
-            color: white;
-            padding: 1rem 2rem;
-            border-radius: 15px;
-            font-weight: 700;
-            font-size: 1.4rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            box-shadow: var(--sombra);
-        }
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-        .nav-menu a {
-            color: var(--marrom);
-            text-decoration: none;
-            font-weight: 500;
-            transition: all 0.3s;
-            position: relative;
-        }
-        .nav-menu a:hover { color: var(--laranja); }
-        .nav-menu a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background: var(--laranja);
-            transition: width 0.3s;
-        }
-        .nav-menu a:hover::after { width: 100%; }
-        
-        /* Hero Aprimorado - SEM IMAGEM */
-        .hero {
-            height: 100vh;
-            min-height: 600px;
-            background: linear-gradient(135deg, 
-                rgba(255,140,0,0.95), 
-                rgba(93,41,6,0.9), 
-                rgba(255,140,0,0.8)
-            );
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: var(--branco);
-            position: relative;
-            overflow: hidden;
-        }
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                radial-gradient(circle at 20% 80%, rgba(255,255,255,0.2) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255,255,255,0.15) 0%, transparent 50%);
-            animation: float 6s ease-in-out infinite;
-        }
-        .hero-content h1 {
-            font-size: clamp(3rem, 8vw, 5rem);
-            font-weight: 700;
-            margin-bottom: 1rem;
-            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
-            animation: fadeInUp 1s ease-out;
-            position: relative;
-            z-index: 2;
-        }
-        .hero-content p {
-            font-size: 1.5rem;
-            margin-bottom: 2rem;
-            font-weight: 300;
-            animation: fadeInUp 1s ease-out 0.2s both;
-            position: relative;
-            z-index: 2;
-        }
-        .cta-button {
-            display: inline-block;
-            background: var(--branco);
-            color: var(--laranja);
-            padding: 1.2rem 3rem;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 600;
-            text-decoration: none;
-            box-shadow: var(--sombra);
-            transition: all 0.3s;
-            animation: fadeInUp 1s ease-out 0.4s both;
-            position: relative;
-            z-index: 2;
-        }
-        .cta-button:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--sombra-hover);
-            background: #f8f8f8;
-        }
-        
-        /* Container Principal */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 100px 2rem 50px;
-        }
-        
-        /* Seção Destaques */
-        .section-title {
-            text-align: center;
-            font-size: clamp(2.5rem, 5vw, 3.5rem);
-            margin: 4rem 0 3rem;
-            color: var(--marrom);
-            position: relative;
-        }
-        .section-title::after {
-            content: '';
-            display: block;
-            width: 80px;
-            height: 4px;
-            background: var(--laranja);
-            margin: 1rem auto;
-            border-radius: 2px;
-        }
-        
-        /* Vitrine COMPLETA - PLACEHOLDERS AUTOMÁTICOS */
-        .vitrine {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-            margin-bottom: 4rem;
-        }
-        .produto {
-            background: var(--branco);
-            border-radius: 25px;
-            overflow: hidden;
-            box-shadow: var(--sombra);
-            transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            position: relative;
-        }
-        .produto::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: linear-gradient(90deg, var(--laranja), var(--laranja-escuro));
-        }
-        .produto:hover {
-            transform: translateY(-15px) scale(1.02);
-            box-shadow: var(--sombra-hover);
-        }
-        
-        /* PLACEHOLDER DE IMAGEM AUTOMÁTICO */
-        .produto-img {
-            width: 100%;
-            height: 260px;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 50%, #dee2e6 100%);
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: #adb5bd;
-            transition: all 0.4s;
-        }
-        .produto:hover .produto-img {
-            transform: scale(1.05);
-            background: linear-gradient(135deg, #fff 0%, #f8f9fa 50%, #e9ecef 100%);
-        }
-        .produto-img i {
-            font-size: 5rem;
-            opacity: 0.3;
-        }
-        
-        /* CORES ESPECÍFICAS POR PRODUTO */
-        .bolo-chocolate .produto-img { background: linear-gradient(135deg, #8B4513, #A0522D); }
-        .bolo-cenoura .produto-img { background: linear-gradient(135deg, #FF8C00, #FFA500); }
-        .bolo-milho .produto-img { background: linear-gradient(135deg, #DAA520, #F4A460); }
-        .bolo-pudim .produto-img { background: linear-gradient(135deg, #D2B48C, #F5DEB3); }
-        .pudim-tapioca .produto-img { background: linear-gradient(135deg, #F5F5DC, #FDF5E6); }
-        .bolo-salgado .produto-img { background: linear-gradient(135deg, #696969, #A9A9A9); }
-        .pao-rosas .produto-img { background: linear-gradient(135deg, #FFB6C1, #FF69B4); }
-        .rosca-caseira .produto-img { background: linear-gradient(135deg, #DEB887, #D2B48C); }
-        .bolo-tapioca .produto-img { background: linear-gradient(135deg, #F0E68C, #EEE8AA); }
-        
-        .info {
-            padding: 2rem;
-            text-align: center;
-        }
-        .info h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.8rem;
-            color: var(--marrom);
-            font-weight: 600;
-        }
-        .descricao {
-            color: #666;
-            margin-bottom: 1.5rem;
-            font-size: 1rem;
-        }
-        .preco-produto {
-            font-size: 1.4rem;
-            font-weight: 700;
-            color: var(--laranja);
-            margin-bottom: 1rem;
-        }
-        .btn-comprar {
-            background: linear-gradient(135deg, var(--laranja), var(--laranja-escuro));
-            color: white;
-            border: none;
-            padding: 0.8rem 2rem;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s;
-            text-decoration: none;
-            display: inline-block;
-        }
-        .btn-comprar:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 10px 25px rgba(255,140,0,0.4);
-        }
-        
-        /* Cardápio */
-        .cardapio {
-            background: var(--branco);
-            border-radius: 25px;
-            padding: 3rem;
-            box-shadow: var(--sombra);
-            margin: 4rem auto;
-            max-width: 800px;
-        }
-        .cardapio-item {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1.5rem 0;
-            border-bottom: 1px solid #f0f0f0;
-            font-size: 1.2rem;
-            transition: all 0.3s;
-        }
-        .cardapio-item:hover {
-            background: rgba(255,140,0,0.05);
-            padding-left: 1rem;
-            border-radius: 10px;
-        }
-        .cardapio-item:last-child { border-bottom: none; }
-        .preco {
-            font-weight: 700;
-            font-size: 1.4rem;
-            color: var(--laranja);
-        }
-        
-        /* WhatsApp */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 30px;
-            right: 30px;
-            background: linear-gradient(135deg, #25d366, #128c7e);
-            color: white;
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.8rem;
-            box-shadow: 0 10px 30px rgba(37,211,102,0.4);
-            z-index: 1000;
-            text-decoration: none;
-            transition: all 0.3s;
-            gap: 0.2rem;
-        }
-        .whatsapp-float:hover {
-            transform: scale(1.1) translateY(-5px);
-            box-shadow: 0 15px 40px rgba(37,211,102,0.5);
-        }
-        
-        /* Footer */
-        footer {
-            background: linear-gradient(135deg, var(--marrom), #3d1a00);
-            color: white;
-            text-align: center;
-            padding: 4rem 2rem 2rem;
-            margin-top: 5rem;
-        }
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        .contato-info {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 2rem 0;
-        }
-        .contato-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            font-size: 1.1rem;
-        }
-        
-        /* Animações */
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-        @keyframes float {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-20px); }
-        }
-        
-        @media (max-width: 768px) {
-            .nav-menu { display: none; }
-            .hero-content h1 { font-size: 2.5rem; }
-            .vitrine { grid-template-columns: 1fr; gap: 1.5rem; }
-        }
-    </style>
-</head>
-<body>
-
-    <!-- Header -->
-    <header>
-        <nav class="nav-container">
-            <div class="logo">
-                <i class="fas fa-birthday-cake"></i>
-                Bolos da Tia Selma
-            </div>
-            <ul class="nav-menu">
-                <li><a href="#home">Início</a></li>
-                <li><a href="#produtos">Produtos</a></li>
-                <li><a href="#cardapio">Cardápio</a></li>
-                <li><a href="#contato">Contato</a></li>
-            </ul>
-        </nav>
-    </header>
-
-    <!-- Hero -->
-    <section class="hero" id="home">
-        <div class="hero-content">
-            <h1>Delícias Caseiras<br>que Conquistam Corações</h1>
-            <p>🍰 Icoaraci — Belém/PA • Sabor tradicional em cada mordida</p>
-            <a href="https://wa.me/5591989440356" class="cta-button" target="_blank">
-                <i class="fab fa-whatsapp"></i> Pedir pelo WhatsApp
-            </a>
-        </div>
-    </section>
-
-    <div class="container">
-        <!-- TODOS OS 9 PRODUTOS -->
-        <h2 class="section-title" id="produtos">Nossos Produtos Deliciosos</h2>
-        
-        <div class="vitrine">
-            <!-- 1. Bolo de Chocolate -->
+<div class="vitrine">
             <div class="produto bolo-chocolate">
                 <div class="produto-img">
-                    <i class="fas fa-birthday-cake"></i>
+                    <img src="bolo-chocolate.jpg" alt="Bolo de Chocolate" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="info">
                     <h3>Bolo de Chocolate</h3>
@@ -422,10 +11,9 @@
                 </div>
             </div>
 
-            <!-- 2. Bolo de Cenoura -->
             <div class="produto bolo-cenoura">
                 <div class="produto-img">
-                    <i class="fas fa-carrot"></i>
+                    <img src="bolo-cenoura.jpg" alt="Bolo de Cenoura com Chocolate" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="info">
                     <h3>Bolo de Cenoura c/ Chocolate</h3>
@@ -435,10 +23,9 @@
                 </div>
             </div>
 
-            <!-- 3. Bolo de Milho -->
             <div class="produto bolo-milho">
                 <div class="produto-img">
-                    <i class="fas fa-corn"></i>
+                    <img src="bolo-milho.jpg" alt="Bolo de Milho" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="info">
                     <h3>Bolo de Milho</h3>
@@ -448,10 +35,9 @@
                 </div>
             </div>
 
-            <!-- 4. Bolo Pudim -->
             <div class="produto bolo-pudim">
                 <div class="produto-img">
-                    <i class="fas fa-utensils"></i>
+                    <img src="bolo-pudim.jpg" alt="Bolo Pudim" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="info">
                     <h3>Bolo Pudim</h3>
@@ -461,10 +47,9 @@
                 </div>
             </div>
 
-            <!-- 5. Pudim de Tapioca -->
             <div class="produto pudim-tapioca">
                 <div class="produto-img">
-                    <i class="fas fa-seedling"></i>
+                    <img src="pudim-tapioca.jpg" alt="Pudim de Tapioca" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="info">
                     <h3>Pudim de Tapioca</h3>
@@ -474,10 +59,9 @@
                 </div>
             </div>
 
-            <!-- 6. Bolo Salgado -->
             <div class="produto bolo-salgado">
                 <div class="produto-img">
-                    <i class="fas fa-drumstick-bite"></i>
+                    <img src="bolo-salgado.jpg" alt="Bolo Salgado" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="info">
                     <h3>Bolo Salgado Especial</h3>
@@ -487,10 +71,9 @@
                 </div>
             </div>
 
-            <!-- 7. Pão de Rosas -->
             <div class="produto pao-rosas">
                 <div class="produto-img">
-                    <i class="fas fa-rose"></i>
+                    <img src="pao-rosas.jpg" alt="Pão de Rosas" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="info">
                     <h3>Pão de Rosas</h3>
@@ -500,10 +83,9 @@
                 </div>
             </div>
 
-            <!-- 8. Rosca Caseira -->
             <div class="produto rosca-caseira">
                 <div class="produto-img">
-                    <i class="fas fa-bread-slice"></i>
+                    <img src="rosca-caseira.jpg" alt="Rosca Caseira" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="info">
                     <h3>Rosca Caseira</h3>
@@ -513,10 +95,9 @@
                 </div>
             </div>
 
-            <!-- 9. Bolo de Tapioca -->
             <div class="produto bolo-tapioca">
                 <div class="produto-img">
-                    <i class="fas fa-seedling"></i>
+                    <img src="bolo-tapioca.jpg" alt="Bolo de Tapioca" style="width: 100%; height: 100%; object-fit: cover;">
                 </div>
                 <div class="info">
                     <h3>Bolo de Tapioca</h3>
@@ -526,87 +107,3 @@
                 </div>
             </div>
         </div>
-
-        <!-- Cardápio -->
-        <h2 class="section-title" id="cardapio">Cardápio Completo</h2>
-        <div class="cardapio">
-            <div class="cardapio-item">
-                <span><i class="fas fa-birthday-cake" style="color: var(--laranja); margin-right: 10px;"></i>Bolo de Chocolate</span>
-                <span class="preco">R$ 70,00</span>
-            </div>
-            <div class="cardapio-item">
-                <span><i class="fas fa-carrot" style="color: var(--laranja); margin-right: 10px;"></i>Bolo de Cenoura com Chocolate</span>
-                <span class="preco">R$ 80,00</span>
-            </div>
-            <div class="cardapio-item">
-                <span><i class="fas fa-corn" style="color: var(--laranja); margin-right: 10px;"></i>Bolo de Milho</span>
-                <span class="preco">R$ 70,00</span>
-            </div>
-            <div class="cardapio-item">
-                <span><i class="fas fa-utensils" style="color: var(--laranja); margin-right: 10px;"></i>Bolo Pudim</span>
-                <span class="preco">R$ 80,00</span>
-            </div>
-            <div class="cardapio-item">
-                <span><i class="fas fa-seedling" style="color: var(--laranja); margin-right: 10px;"></i>Pudim de Tapioca</span>
-                <span class="preco">R$ 80,00</span>
-            </div>
-            <div class="cardapio-item">
-                <span><i class="fas fa-drumstick-bite" style="color: var(--laranja); margin-right: 10px;"></i>Bolo Salgado Especial</span>
-                <span class="preco">R$ 80,00</span>
-            </div>
-            <div class="cardapio-item">
-                <span><i class="fas fa-rose" style="color: var(--laranja); margin-right: 10px;"></i>Pão de Rosas</span>
-                <span class="preco">R$ 80,00</span>
-            </div>
-            <div class="cardapio-item">
-                <span><i class="fas fa-bread-slice" style="color: var(--laranja); margin-right: 10px;"></i>Rosca Caseira</span>
-                <span class="preco">R$ 80,00</span>
-            </div>
-            <div class="cardapio-item">
-                <span><i class="fas fa-seedling" style="color: var(--laranja); margin-right: 10px;"></i>Bolo de Tapioca</span>
-                <span class="preco">R$ 80,00</span>
-            </div>
-        </div>
-    </div>
-
-    <!-- WhatsApp -->
-    <a href="https://wa.me/5591989440356" class="whatsapp-float pulse" target="_blank">
-        <i class="fab fa-whatsapp"></i>
-        <span style="font-size: 0.8rem; font-weight: 600;">Chat</span>
-    </a>
-
-    <!-- Footer -->
-    <footer id="contato">
-        <div class="footer-content">
-            <h3><i class="fas fa-heart" style="color: var(--laranja);"></i> Bolos da Tia Selma</h3>
-            <div class="contato-info">
-                <div class="contato-item">
-                    <i class="fas fa-map-marker-alt"></i>
-                    <span>Icoaraci - Ponta Grossa, Belém/PA</span>
-                </div>
-                <div class="contato-item">
-                    <i class="fab fa-whatsapp"></i>
-                    <span>(91) 98944-0356</span>
-                </div>
-                <div class="contato-item">
-                    <i class="fas fa-truck"></i>
-                    <span>Delivery a combinar</span>
-                </div>
-            </div>
-            <p style="margin-top: 2rem; opacity: 0.8;">🍰 Feito com amor para adoçar sua vida</p>
-        </div>
-    </footer>
-
-    <script>
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-                }
-            });
-        });
-    </script>
-</body>
-</html>
