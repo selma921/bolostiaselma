@@ -1,221 +1,420 @@
-# Vitrine Melhorada — Bolos da Tia Selma
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-Substitua sua seção atual da vitrine por este código:
+<title>Bolos da Tia Selma</title>
 
-```html
-<div class="vitrine">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    <!-- BOLO DE CHOCOLATE -->
-    <div class="produto">
-        <img src="imagens/bolo-chocolate.jpg" alt="Bolo de Chocolate">
+<style>
 
-        <div class="info">
-            <h3>🍫 Bolo de Chocolate</h3>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
 
-            <p>
-                Bolo fofinho com sabor intenso de chocolate.
-                Perfeito para aniversários e café da tarde.
-            </p>
+body{
+    background:#fff8f3;
+    color:#333;
+}
 
-            <div class="preco-produto">R$ 70,00</div>
+/* HERO */
 
-            <a href="https://wa.me/5591989440356?text=Quero%20o%20Bolo%20de%20Chocolate!"
-               target="_blank"
-               class="btn-comprar">
-               Pedir Agora
-            </a>
-        </div>
-    </div>
+.hero{
+    height:90vh;
+    background:
+    linear-gradient(rgba(0,0,0,0.45),rgba(0,0,0,0.45)),
+    url('imagens/banner.jpg') center/cover;
+    
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:20px;
+}
 
-    <!-- BOLO DE CENOURA -->
-    <div class="produto">
-        <img src="imagens/bolo-cenoura.jpg" alt="Bolo de Cenoura">
+.hero-content{
+    max-width:700px;
+    color:white;
+}
 
-        <div class="info">
-            <h3>🥕 Bolo de Cenoura</h3>
+.hero h1{
+    font-size:60px;
+    margin-bottom:20px;
+    font-weight:700;
+}
 
-            <p>
-                Massa macia com cobertura cremosa de chocolate.
-                Um clássico irresistível.
-            </p>
+.hero p{
+    font-size:22px;
+    margin-bottom:35px;
+    line-height:1.6;
+}
 
-            <div class="preco-produto">R$ 80,00</div>
+.btn-whats{
+    background:#25D366;
+    color:white;
+    text-decoration:none;
+    padding:18px 35px;
+    border-radius:50px;
+    font-size:20px;
+    font-weight:600;
+    transition:.3s;
+    display:inline-block;
+}
 
-            <a href="https://wa.me/5591989440356?text=Quero%20o%20Bolo%20de%20Cenoura!"
-               target="_blank"
-               class="btn-comprar">
-               Pedir Agora
-            </a>
-        </div>
-    </div>
+.btn-whats:hover{
+    transform:scale(1.05);
+}
 
-    <!-- BOLO DE MILHO -->
-    <div class="produto">
-        <img src="imagens/bolo-milho.jpg" alt="Bolo de Milho">
+/* TITULO */
 
-        <div class="info">
-            <h3>🌽 Bolo de Milho</h3>
+.titulo{
+    text-align:center;
+    padding:70px 20px 20px;
+}
 
-            <p>
-                Cremoso, dourado e com sabor caseiro tradicional.
-            </p>
+.titulo h2{
+    font-size:42px;
+    color:#8B4513;
+    margin-bottom:10px;
+}
 
-            <div class="preco-produto">R$ 70,00</div>
+.titulo p{
+    color:#777;
+    font-size:18px;
+}
 
-            <a href="https://wa.me/5591989440356?text=Quero%20o%20Bolo%20de%20Milho!"
-               target="_blank"
-               class="btn-comprar">
-               Pedir Agora
-            </a>
-        </div>
-    </div>
+/* VITRINE */
 
-    <!-- BOLO PUDIM -->
-    <div class="produto">
-        <img src="imagens/bolo-pudim.jpg" alt="Bolo Pudim">
-
-        <div class="info">
-            <h3>🍮 Bolo Pudim</h3>
-
-            <p>
-                Mistura perfeita de bolo e pudim. Cremoso e irresistível.
-            </p>
-
-            <div class="preco-produto">R$ 80,00</div>
-
-            <a href="https://wa.me/5591989440356?text=Quero%20o%20Bolo%20Pudim!"
-               target="_blank"
-               class="btn-comprar">
-               Pedir Agora
-            </a>
-        </div>
-    </div>
-
-    <!-- PÃO DE ROSAS -->
-    <div class="produto">
-        <img src="imagens/pao-rosas.jpg" alt="Pão de Rosas">
-
-        <div class="info">
-            <h3>🌹 Pão de Rosas</h3>
-
-            <p>
-                Delicioso pão doce artesanal em formato de rosas.
-            </p>
-
-            <div class="preco-produto">R$ 35,00</div>
-
-            <a href="https://wa.me/5591989440356?text=Quero%20o%20Pão%20de%20Rosas!"
-               target="_blank"
-               class="btn-comprar">
-               Pedir Agora
-            </a>
-        </div>
-    </div>
-
-</div>
-```
-
----
-
-# CSS Melhorado
-
-Cole este CSS dentro da tag `<style>` do site:
-
-```css
 .vitrine{
+    width:90%;
+    max-width:1300px;
+    margin:40px auto 100px;
+
     display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
-    gap:25px;
-    margin-top:40px;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:35px;
 }
 
 .produto{
-    background:#fff;
-    border-radius:20px;
+    background:white;
+    border-radius:25px;
     overflow:hidden;
-    box-shadow:0 4px 15px rgba(0,0,0,0.12);
-    transition:0.3s;
+    box-shadow:0 10px 25px rgba(0,0,0,0.08);
+    transition:.4s;
 }
 
 .produto:hover{
-    transform:translateY(-8px);
+    transform:translateY(-10px);
 }
 
 .produto img{
     width:100%;
-    height:250px;
+    height:280px;
     object-fit:cover;
 }
 
 .info{
-    padding:20px;
+    padding:25px;
 }
 
 .info h3{
+    font-size:28px;
     margin-bottom:10px;
-    color:#8B4513;
+    color:#5c2c10;
 }
 
 .info p{
-    color:#555;
-    line-height:1.5;
+    color:#666;
+    line-height:1.6;
+    margin-bottom:20px;
 }
 
-.preco-produto{
-    font-size:26px;
-    font-weight:bold;
+.preco{
+    font-size:34px;
+    font-weight:700;
     color:#d35400;
-    margin:15px 0;
+    margin-bottom:20px;
 }
 
 .btn-comprar{
+    width:100%;
     display:block;
     text-align:center;
     background:#25D366;
     color:white;
     text-decoration:none;
-    padding:12px;
-    border-radius:10px;
-    font-weight:bold;
-    transition:0.3s;
+    padding:15px;
+    border-radius:12px;
+    font-size:18px;
+    font-weight:600;
+    transition:.3s;
 }
 
 .btn-comprar:hover{
-    background:#1da851;
+    background:#1faa52;
 }
-```
 
----
+/* SOBRE */
 
-# Estrutura das imagens
+.sobre{
+    background:#fff;
+    padding:100px 10%;
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:60px;
+    align-items:center;
+}
 
-Crie uma pasta chamada:
+.sobre img{
+    width:100%;
+    border-radius:25px;
+}
 
-```text
-imagens
-```
+.sobre-texto h2{
+    font-size:42px;
+    color:#8B4513;
+    margin-bottom:20px;
+}
 
-E coloque dentro dela:
+.sobre-texto p{
+    line-height:1.8;
+    color:#555;
+    font-size:18px;
+}
 
-```text
-bolo-chocolate.jpg
-bolo-cenoura.jpg
-bolo-milho.jpg
-bolo-pudim.jpg
-pao-rosas.jpg
-```
+/* RODAPE */
 
----
+footer{
+    background:#5c2c10;
+    color:white;
+    text-align:center;
+    padding:40px 20px;
+}
 
-# Próximas melhorias recomendadas
+footer p{
+    margin:8px 0;
+}
 
-* Banner grande no topo
-* Fundo mais profissional
-* Botão flutuante WhatsApp
-* Avaliações de clientes
-* Galeria de fotos
-* Animações suaves
-* Layout mobile mais moderno
-* Menu superior elegante
-* Logo personalizada
-* Rodapé profissional
+/* BOTAO FLUTUANTE */
+
+.whats-float{
+    position:fixed;
+    right:20px;
+    bottom:20px;
+    background:#25D366;
+    width:65px;
+    height:65px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color:white;
+    text-decoration:none;
+    font-size:32px;
+    box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+/* MOBILE */
+
+@media(max-width:900px){
+
+.hero h1{
+    font-size:42px;
+}
+
+.hero p{
+    font-size:18px;
+}
+
+.sobre{
+    grid-template-columns:1fr;
+}
+
+}
+
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>Bolos da Tia Selma</h1>
+
+        <p>
+            Bolos artesanais feitos com carinho,
+            sabor caseiro e aquele toque especial
+            que lembra a infância.
+        </p>
+
+        <a href="https://wa.me/5591989440356"
+           class="btn-whats"
+           target="_blank">
+
+           🍰 Fazer Pedido
+        </a>
+
+    </div>
+
+</section>
+
+<!-- TITULO -->
+
+<section class="titulo">
+
+    <h2>Nossos Produtos</h2>
+
+    <p>Feitos artesanalmente com ingredientes selecionados</p>
+
+</section>
+
+<!-- VITRINE -->
+
+<section class="vitrine">
+
+    <!-- PRODUTO -->
+
+    <div class="produto">
+
+        <img src="imagens/bolo-chocolate.jpg">
+
+        <div class="info">
+
+            <h3>🍫 Bolo de Chocolate</h3>
+
+            <p>
+                Massa fofinha com sabor intenso de chocolate.
+            </p>
+
+            <div class="preco">R$ 70,00</div>
+
+            <a href="https://wa.me/5591989440356?text=Quero%20o%20Bolo%20de%20Chocolate!"
+               class="btn-comprar"
+               target="_blank">
+
+               Pedir Agora
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- PRODUTO -->
+
+    <div class="produto">
+
+        <img src="imagens/bolo-cenoura.jpg">
+
+        <div class="info">
+
+            <h3>🥕 Bolo de Cenoura</h3>
+
+            <p>
+                Cobertura cremosa e massa super macia.
+            </p>
+
+            <div class="preco">R$ 80,00</div>
+
+            <a href="https://wa.me/5591989440356?text=Quero%20o%20Bolo%20de%20Cenoura!"
+               class="btn-comprar"
+               target="_blank">
+
+               Pedir Agora
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- PRODUTO -->
+
+    <div class="produto">
+
+        <img src="imagens/pao-rosas.jpg">
+
+        <div class="info">
+
+            <h3>🌹 Pão de Rosas</h3>
+
+            <p>
+                Delicioso pão artesanal em formato de rosas.
+            </p>
+
+            <div class="preco">R$ 35,00</div>
+
+            <a href="https://wa.me/5591989440356?text=Quero%20o%20Pão%20de%20Rosas!"
+               class="btn-comprar"
+               target="_blank">
+
+               Pedir Agora
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- SOBRE -->
+
+<section class="sobre">
+
+    <img src="imagens/cozinha.jpg">
+
+    <div class="sobre-texto">
+
+        <h2>Feito com carinho</h2>
+
+        <p>
+            Cada bolo é preparado artesanalmente,
+            usando ingredientes frescos e receitas
+            tradicionais que encantam nossos clientes.
+        </p>
+
+        <br>
+
+        <p>
+            Nosso objetivo é levar sabor,
+            qualidade e felicidade para sua mesa.
+        </p>
+
+    </div>
+
+</section>
+
+<!-- RODAPE -->
+
+<footer>
+
+    <p><strong>Bolos da Tia Selma</strong></p>
+
+    <p>📍 Icoaraci - Belém/PA</p>
+
+    <p>📞 (91) 98944-0356</p>
+
+</footer>
+
+<!-- BOTAO FLUTUANTE -->
+
+<a href="https://wa.me/5591989440356"
+   class="whats-float"
+   target="_blank">
+
+🟢
+
+</a>
+
+</body>
+</html>
